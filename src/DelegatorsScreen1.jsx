@@ -118,7 +118,7 @@ function DelegatorsScreen() {
               <th>Collator</th>
               <th>Collator Address</th>
               <th>Active?</th>
-              <th>GLMR</th>
+              <th>ZTG</th>
               <th>1 Day Reward</th>
               <th>APY (4 rounds)</th>
               <th>Rank</th>

@@ -6,7 +6,7 @@ function Zeitgeist () {
   
     return (
       <div>
-        {/* <ZeitgeistDashboard /> */}
+        <ZeitgeistDashboard />
         <ZeitgeistCollatorData />
         <p className="Disclaimer">If you encounter an issue please report to us</p>
       </div>

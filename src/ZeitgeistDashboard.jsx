@@ -21,7 +21,7 @@ function ZeitgeistDashboard() {
     const fetchData = async () => {
       await axios
         .get(
-          "https://collatorstats.brightlystake.com/api/Zeitgeist/getCollatorConsts"
+          "https://collatorstats.brightlystake.com/api/zeitgeist/getCollatorConsts"
         )
         .then((res) => {
           const collatorConsts = res.data.data[0];
@@ -40,7 +40,7 @@ function ZeitgeistDashboard() {
         });
 
       await axios
-        .get("https://collatorstats.brightlystake.com/api/Zeitgeist/getTotalStake")
+        .get("https://collatorstats.brightlystake.com/api/zeitgeist/getTotalStake")
         .then((res) => {
           const totalActiveStake = res.data.data[0];
           settotalActiveStake(res.data.data[0].totalStake);
@@ -73,7 +73,7 @@ function ZeitgeistDashboard() {
               <div className="inflation">
                 <div className="content">
                   <div className="label">Inflation</div>
-                  <div className="value">5%</div>
+                  <div className="value">1.5%</div>
                 </div>
               </div>
               <div className="collatorCount">
@@ -101,7 +101,7 @@ function ZeitgeistDashboard() {
               <div className="minBond">
                 <div className="content">
                   <div className="label">Mininimum Staking</div>
-                  <div className="value">{minimumDelegation} GLMR</div>
+                  <div className="value">{minimumDelegation} ZTG</div>
                 </div>
               </div>
               <div className="roundLength">
@@ -122,9 +122,8 @@ function ZeitgeistDashboard() {
                   <div className="value">
                     ~{" "}
                     {(
-                      (unStakeDuration * blocksPerRound * 12) / 86400
-                    ).toFixed(2)}
-                    days
+                      (unStakeDuration * blocksPerRound * 12) / 60
+                    ).toFixed(2) } mins
                   </div>
                 </div>
               </div>
@@ -132,7 +131,7 @@ function ZeitgeistDashboard() {
                 <div className="content">
                   <div className="label">Rewards Distribution</div>
                   <div className="value">
-                    ~ {(blocksPerRound * 12) / 3600} hrs
+                    ~ {(((blocksPerRound * 12) / 3600) * 60).toFixed(2)} mins
                   </div>
                 </div>
               </div>
