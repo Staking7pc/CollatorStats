@@ -48,9 +48,9 @@ function MoonbeamCollatorData() {
                   <tr className="row">
                     <td className={item.isActive === "InActive" ? "InActive" : "Active"}>{item.identity}</td>
                     <td>
-                      <a href={url} target="_blank" rel="noopener noreferrer">
+                      {/* <a href={url} target="_blank" rel="noopener noreferrer"> */}
                         <u>{item.collator}</u>
-                      </a>
+                      {/* </a> */}
                     </td>                   
                     <td>{item.countedStake}</td>
                     <td>{item.self}</td>
