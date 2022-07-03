@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  background: linear-gradient(45deg, #0d1126 0%, #301748 100%);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

@@ -1,0 +1,129 @@
+body {
+  /* background: #c5d7dd !important;  */
+  background: #e2e2e2 !important;
+  font-family: "Poppins" !important;
+}
+.Audit {
+  padding-bottom: 16px;
+  font-family: Poppins;
+  font-weight: bolder;
+  font-size: 42px;
+  line-height: 135%;
+  color: #0a0e30;
+}
+.sample {
+  padding-bottom: 8px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 30px;
+  text-transform: capitalize;
+  color: #0a0e30;
+}
+.ethereum {
+  padding-bottom: 8px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  color: #0a0e30;
+}
+
+.copyImage {
+  width: 20px;
+  opacity: 0.4;
+  margin-left: 10px;
+  padding-bottom: 2px;
+  cursor: pointer;
+}
+@media screen and (max-width: 991px) {
+  .cnta {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+}
+.table-responsive{
+  text-align: center;
+
+}
+@media only screen and (max-width: 445px) and (min-width: 279px) {
+  .Audit {
+    font-size: 35px !important;
+  }
+  .sample {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px !important;
+    color: #0a0e30 !important;
+  }
+  .ethereum {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    color: #0a0e30;
+  }
+}
+@media screen and (max-width: 320px) {
+  .sample {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px !important;
+    color: #0a0e30 !important;
+  }
+  .ethereum {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    color: #0a0e30;
+  }
+}
+@media screen and (max-width: 280px) {
+  .sample {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px !important;
+    color: #0a0e30 !important;
+  }
+  .ethereum {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    color: #0a0e30;
+  }
+}
+.leavegap {
+  /* Header text */
+
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 30px;
+  padding-bottom: 120px;
+  color: #0a0e30;
+}
+.caaar{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+  padding: 0px !important;
+}
+.rulesheader{
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  color: #0A0E30;
+}
+.rules {
+  font-family: Poppins;
+  width: 90%;
+  height: 100%;  
+  padding-left: 20px;
+  padding-top: 20px;  
+  background: #ffffff;
+  border: 1px solid #f0f0f0;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
