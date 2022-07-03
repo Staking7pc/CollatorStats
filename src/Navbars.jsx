@@ -9,11 +9,11 @@ function Navbars() {
         <div class="container">
 
           <h1 class="logo">
-          <a href="/zeitgeist/Dashboard"></a>Brightlystake</h1>
+          <a href="https://brightlystake.com/"></a>Brightlystake</h1>
           <nav>
             <ul>
               <li>
-                <a href="/zeitgeist/Dashboard">Zeitgeist</a>
+                <a href="/zeitgeist">Zeitgeist</a>
               </li>
               <li>
                 <a href="https://collatorstats.brightlystake.com/">Stake with us</a>

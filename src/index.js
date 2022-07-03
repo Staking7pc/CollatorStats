@@ -13,7 +13,7 @@ ReactDOM.render(
       <Navbar />
       <Routes>
         <Route path="/" element={<LandingPage/>} />
-        <Route path="/zeitgeist/Dashboard" element={<Moonbeam/>} />
+        <Route path="/zeitgeist" element={<Moonbeam/>} />
       </Routes>
     </React.Fragment>
   </Router>,
