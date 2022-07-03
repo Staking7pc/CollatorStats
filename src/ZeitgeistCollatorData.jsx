@@ -23,9 +23,9 @@ function ZeitgeistCollatorData() {
   return (
     <>
       <div className="statsTable">
-        <div className="table-title">
+        {/* <div className="table-title">
           <h2>Click on each collator address for more details </h2>
-        </div>
+        </div> */}
         <div className="table-title">
           <h4>Updated as of block : {asOfBlock}</h4>
         </div>
