@@ -1,21 +1,20 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import "./MoonriverCollatorData.css";
+
+import "./ZeitgeistCollatorData.css";
 import Table from "react-bootstrap/Table";
 
-function MoonriverCollatorData() {
+function ZeitgeistCollatorData() {
   const [collatorData, setcollatorData] = useState([]);
   const [asOfBlock, setasOfBlock] = useState([]);
   useEffect(() => {
     axios
-      .get(
-        "https://collatorstats.brightlystake.com/api/zeitgeist/getCollatorDetails"
-      )
+      .get("https://collatorstats.brightlystake.com/api/zeitgeist/getCollatorDetails")
       .then((res) => {
         setcollatorData(res.data.data);
-        setasOfBlock(res.data.data[20].asOfBlock);
-        console.log(res.data.data[20].asOfBlock);
+        setasOfBlock(res.data.data[2].asOfBlock);
+        console.log(res.data.data[2].asOfBlock);
       })
       .catch((err) => {
         console.log(err);
@@ -36,10 +35,6 @@ function MoonriverCollatorData() {
               <tr>
                 <th>Identity</th>
                 <th>Address</th>
-                <th>7Day APY Average*</th>
-                {/* <th>Rank</th> */}
-                <th>7Day Blocks Count*</th>
-                {/* <th>Rank</th> */}
                 <th>Counted Staked**</th>
                 <th>Self Staked**</th>
                 <th>Delegators**</th>
@@ -48,37 +43,29 @@ function MoonriverCollatorData() {
             </thead>
             <tbody>
               {collatorData.map((item, index) => {
-                var url =
-                  "https://moonbeam.brightlystake.com/moonriver/analytics/" +
-                  item.collator;
+                var url = "https://collatorstats.brightlystake.com/Zeitgeist/analytics/" + item.collator;
                 return (
                   <tr className="row">
-                    <td className={ item.isActive === "InActive" ? "InActive" : "Active" }>{item.identity}</td>
+                    <td className={item.isActive === "InActive" ? "InActive" : "Active"}>{item.identity}</td>
                     <td>
-                      <a color = 'FFEBEE' href={url} target="_blank" rel="noopener noreferrer">
+                      {/* <a href={url} target="_blank" rel="noopener noreferrer"> */}
                         <u>{item.collator}</u>
-                      </a>
-                    </td>
-                    <td>{item.sevenDayAPY}</td>
-                    {/* <td>{item.sevenDayAPYRank}</td> */}
-                    <td>{item.sevenDayBlocks}</td>
-                    {/* <td>{item.sevenDayBlocksRank}</td> */}
+                      {/* </a> */}
+                    </td>                   
                     <td>{item.countedStake}</td>
-                    <td>{item.selfStake}</td>
+                    <td>{item.self}</td>
                     <td>{item.delegatorsCount}</td>
-                    <td className={ item.isActive === "InActive" ? "InActive" : "Active" } >{item.isActive} </td>
+                    <td className={item.isActive === "InActive" ? "InActive" : "Active"}>{item.isActive}</td>
                   </tr>
                 );
               })}
             </tbody>
           </Table>
         </div>
-        <div className="data-labels">
-          * - updated daily ** - updated every 5 mins
-        </div>
+        <div className="data-labels">* - updated daily ** - updated every 5 mins</div>
       </div>
     </>
   );
 }
 
-export default MoonriverCollatorData;
+export default ZeitgeistCollatorData;

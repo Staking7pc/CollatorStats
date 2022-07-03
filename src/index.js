@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import Moonbeam from "./Moonbeam";
+import Moonbeam from "./Zeitgeist";
 import LandingPage from "./LandingPage";
 
 import Navbar from "./Navbars";

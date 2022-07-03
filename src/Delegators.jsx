@@ -10,7 +10,7 @@ function Delegators() {
   const url = useParams();
   useEffect(() => {
     axios
-      .get("https://moonbeam.brightlystake.com/api/"+url.type+"/getDelegators/"+url.collatorId.toLowerCase())
+      .get("https://collatorstats.brightlystake.com/api/"+url.type+"/getDelegators/"+url.collatorId.toLowerCase())
       .then((res) => {
         setdelegatorsData(res.data.data); 
       })

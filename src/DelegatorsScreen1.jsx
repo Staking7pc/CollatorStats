@@ -28,7 +28,7 @@ function DelegatorsScreen() {
     };
 
     await axios
-      .get("https://moonbeam.brightlystake.com/api/moonbeam/getDelegatorRank/" + formValues.delegator.toLowerCase())
+      .get("https://collatorstats.brightlystake.com/api/moonbeam/getDelegatorRank/" + formValues.delegator.toLowerCase())
       .then((res) => {
         console.log(res.data.data);
         setmoonbeamData(res.data.data);        
@@ -84,7 +84,7 @@ function DelegatorsScreen() {
       });
 
     axios
-      .get("https://moonbeam.brightlystake.com/api/moonriver/getDelegatorRank/" + formValues.delegator.toLowerCase())
+      .get("https://collatorstats.brightlystake.com/api/moonriver/getDelegatorRank/" + formValues.delegator.toLowerCase())
       .then((res) => {
         setmoonriverData(res.data.data);
         try {
@@ -129,7 +129,7 @@ function DelegatorsScreen() {
           </thead>
           <tbody>
             {moonbeamData.map((item, index) => {
-              var url = "https://moonbeam.brightlystake.com/moonbeam/analytics/" + item.collator;
+              var url = "https://collatorstats.brightlystake.com/moonbeam/analytics/" + item.collator;
 
               const _collator_list = [...new Set(glmrRewardsData.map((item) => item.collator))];
 
@@ -194,7 +194,7 @@ function DelegatorsScreen() {
           </thead>
           <tbody>
             {moonriverData.map((item, index) => {
-              var url = "https://moonbeam.brightlystake.com/moonriver/analytics/" + item.collator;
+              var url = "https://collatorstats.brightlystake.com/moonriver/analytics/" + item.collator;
               return (
                 <tr className="row">
                   <td>{item.identity}</td>

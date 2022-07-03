@@ -21,7 +21,7 @@ function Graph() {
     const chart = () => {
       axios
         .get(
-          "https://moonbeam.brightlystake.com/api/" +
+          "https://collatorstats.brightlystake.com/api/" +
             url.type +
             "/getDailyBlockCount/" +
             url.collatorId.toLowerCase()
