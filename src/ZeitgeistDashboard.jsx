@@ -7,6 +7,7 @@ import React from "react";
 function ZeitgeistDashboard() {
   const [collatorConsts, setcollatorConsts] = useState([]);
   const [collatorsCount, setcollatorsCount] = useState([]);
+  const [inflation, setInflation] = useState([]);
   const [unStakeDuration, setunStakeDuration] = useState([]);
   const [totalIssuance, settotalIssuance] = useState([]);
   const [minimumDelegation, setminimumDelegation] = useState([]);
@@ -30,6 +31,7 @@ function ZeitgeistDashboard() {
           setunStakeDuration(collatorConsts.unStakeDuration);
           settotalIssuance(collatorConsts.totalIssuance);
           setminimumDelegation(collatorConsts.minimumDelegation);
+          setInflation(collatorConsts.inflation);
           setmaxDelegatorsPerCandidate(
             collatorConsts.maxDelegatorsPerCandidate
           );
@@ -73,7 +75,7 @@ function ZeitgeistDashboard() {
               <div className="inflation">
                 <div className="content">
                   <div className="label">Inflation</div>
-                  <div className="value">1.5%</div>
+                  <div className="value">{inflation}%</div>
                 </div>
               </div>
               <div className="collatorCount">
