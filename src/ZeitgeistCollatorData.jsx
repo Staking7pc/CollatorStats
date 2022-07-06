@@ -4,22 +4,42 @@ import { useState, useEffect } from "react";
 
 import "./ZeitgeistCollatorData.css";
 import Table from "react-bootstrap/Table";
-
+var _blocksProduced = new Map();
 function ZeitgeistCollatorData() {
   const [collatorData, setcollatorData] = useState([]);
   const [asOfBlock, setasOfBlock] = useState([]);
+  const [dailyCount, setdailyCount] = useState([]);
+  
   useEffect(() => {
     axios
       .get("https://collatorstats.brightlystake.com/api/zeitgeist/getCollatorDetails")
       .then((res) => {
         setcollatorData(res.data.data);
         setasOfBlock(res.data.data[2].asOfBlock);
-        console.log(res.data.data[2].asOfBlock);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+      axios
+      .get("https://collatorstats.brightlystake.com/api/zeitgeist/getDailyStats")
+      .then((res) => {        
+        setdailyCount(res.data.data);
+      })
+      .then(()=>{
+        dailyCount.map((item1, index1)=>{
+          _blocksProduced.set(item1.collator.toLowerCase(), item1.block_count);
+        })
+
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+
+
+
+
   return (
     <>
       <div className="statsTable">
@@ -35,6 +55,7 @@ function ZeitgeistCollatorData() {
               <tr>
                 <th>Identity</th>
                 <th>Address</th>
+                <th>Blocks Produced Yesterday*</th>
                 <th>Counted Staked**</th>
                 <th>Self Staked**</th>
                 <th>Delegators**</th>
@@ -44,7 +65,7 @@ function ZeitgeistCollatorData() {
             <tbody>
               {collatorData.map((item, index) => {
                 var url = "https://collatorstats.brightlystake.com/Zeitgeist/analytics/" + item.collator;
-                return (
+               return (
                   <tr className="row">
                     <td className={item.isActive === "InActive" ? "InActive" : "Active"}>{item.identity}</td>
                     <td>
@@ -52,6 +73,7 @@ function ZeitgeistCollatorData() {
                         <u>{item.collator}</u>
                       {/* </a> */}
                     </td>                   
+                    <td>{_blocksProduced.get(item.collator.toLowerCase())}</td>
                     <td>{item.countedStake}</td>
                     <td>{item.self}</td>
                     <td>{item.delegatorsCount}</td>
@@ -62,7 +84,7 @@ function ZeitgeistCollatorData() {
             </tbody>
           </Table>
         </div>
-        <div className="data-labels">* - updated daily ** - updated every 5 mins</div>
+        <div className="data-labels">* - updated daily       ** - updated every 5 mins</div>
       </div>
     </>
   );
