@@ -9,7 +9,7 @@ function Navbars() {
         <div class="container">
 
           <h1 class="logo">
-          <a href="https://brightlystake.com/"></a>Brightlystake</h1>
+          <a href="https://brightlystake.com/">Brightlystake</a></h1>
           <nav>
             <ul>
               <li>
