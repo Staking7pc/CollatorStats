@@ -12,17 +12,27 @@ export default function ZeitgeistCollatorData() {
   const [totalIssuance, settotalIssuance] = useState([]);
   const [inflation, setInflation] = useState([]);
   const [dailyBlocks, setdailyBlocks] = useState([]);
-
+  const [avgStake, setavgStake] = useState([]);
+  
   function getDailyCountData(collator) {
-    var count = 0,
-      a;
+    var count = 0,    a;
     dailyCount.map((item1, index1) => {
       item1.collator === collator ? (count = item1.block_count) : (a = 1);
     });
     return count;
   }
+
+  function getDailyAvgData(collator) {
+    var avgBlocks=0.001,    a;
+    dailyCount.map((item1, index1) => {
+      item1.collator === collator ? (avgBlocks=item1.avgCountedStake) : (a = 1);
+    });
+    return avgBlocks;
+  }
   function calculateAPY(blocks, countedStake) {
+    
     var dailyReward = (blocks / dailyBlocks) * ((totalIssuance * (inflation / 2)) / 36500).toFixed(2);
+    console.log('daily Reward : ' + dailyReward + " - "+countedStake)
     var returns = ((100 / countedStake) * dailyReward * 365).toFixed(2);
     return returns;
   }
@@ -65,7 +75,8 @@ export default function ZeitgeistCollatorData() {
         .then((res) => {
           console.log("axios 2");
           setdailyCount(res.data.data);
-          setdailyBlocks(res.data.data[2].totalBlocksProduced);
+          setdailyBlocks(res.data.data[2].totalBlocksProduced);          
+          console.log()
         })
 
         .catch((err) => {
@@ -103,6 +114,8 @@ export default function ZeitgeistCollatorData() {
             <tbody>
               {collatorData.map((item, index) => {
                 var dailyCountCollator = getDailyCountData(item.collator);
+                var dailyCountedAvgCollator = getDailyAvgData(item.collator);
+                
                 return (
                   <tr className="row">
                     <td className={item.isActive === "InActive" ? "InActive" : "Active"}>{item.identity}</td>
@@ -112,7 +125,7 @@ export default function ZeitgeistCollatorData() {
                       {/* </a> */}
                     </td>
                     <td>{dailyCountCollator}</td>
-                    <td>{calculateAPY(dailyCountCollator, item.countedStake)} %</td>
+                    <td>{calculateAPY(dailyCountCollator, dailyCountedAvgCollator)} %</td>
                     <td>{item.countedStake}</td>
                     <td>{item.self}</td>
                     <td>{item.delegatorsCount}</td>
@@ -124,6 +137,7 @@ export default function ZeitgeistCollatorData() {
           </Table>
         </div>
         <div className="data-labels">* - updated daily ** - updated every 5 mins</div>
+        <div className="data-labels">* You can </div>
         <div>
           <div className="table-title">
             <h2>APY Calculation Approach </h2>
