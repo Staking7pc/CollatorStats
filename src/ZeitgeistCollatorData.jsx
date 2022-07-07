@@ -97,7 +97,7 @@ export default function ZeitgeistCollatorData() {
         </div>
         <div>
         <p>APY will change based on total stake and block produced</p>
-        <p>Lower the total Stake higher the % share of rewards for delegators</p>
+        <p>Lower the total Stake higher the % share of rewards for delegators of a collaotor</p>
         <p>Higher the block production by collator, higher the rewards for delegators</p>
         </div>
 
@@ -109,7 +109,7 @@ export default function ZeitgeistCollatorData() {
                 <th>Address</th>
                 <th>Blocks Produced Yesterday*</th>
                 <th>Apprx Yesterday's APY*</th>
-                <th>Average countedStake Yesterday</th>
+                <th>Average countedStake Yesterday*</th>
                 <th>Counted Staked**</th>
                 <th>Self Staked**</th>
                 <th>Delegators**</th>
