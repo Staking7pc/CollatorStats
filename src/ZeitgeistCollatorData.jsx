@@ -105,6 +105,7 @@ export default function ZeitgeistCollatorData() {
                 <th>Address</th>
                 <th>Blocks Produced Yesterday*</th>
                 <th>Apprx Yesterday's APY*</th>
+                <th>Average countedStake Yesterday</th>
                 <th>Counted Staked**</th>
                 <th>Self Staked**</th>
                 <th>Delegators**</th>
@@ -126,6 +127,7 @@ export default function ZeitgeistCollatorData() {
                     </td>
                     <td>{dailyCountCollator}</td>
                     <td>{calculateAPY(dailyCountCollator, dailyCountedAvgCollator)} %</td>
+                    <td>{(Math.floor(dailyCountedAvgCollator * 100) / 100).toFixed(2)}</td>
                     <td>{item.countedStake}</td>
                     <td>{item.self}</td>
                     <td>{item.delegatorsCount}</td>
