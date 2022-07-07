@@ -93,8 +93,12 @@ export default function ZeitgeistCollatorData() {
           <h2>Click on each collator address for more details </h2>
         </div> */}
         <div className="table-title">
-          <h4>Updated as of block : {asOfBlock}</h4>
-          {console.log("header")}
+        <h4>Updated as of block : {asOfBlock}</h4>
+        </div>
+        <div>
+        <p>APY will change based on total stake and block produced</p>
+        <p>Lower the total Stake higher the % share of rewards for delegators</p>
+        <p>Higher the block production by collator, higher the rewards for delegators</p>
         </div>
 
         <div className="table-responsive">
