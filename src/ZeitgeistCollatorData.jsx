@@ -137,7 +137,7 @@ export default function ZeitgeistCollatorData() {
           </Table>
         </div>
         <div className="data-labels">* - updated daily ** - updated every 5 mins</div>
-        <div className="data-labels">* You can </div>
+        <div className="data-labels">* You can use tools provided by collators to compound your stake like the one from Iceberg Nodes https://icebergnodes.netsons.org/  </div>
         <div>
           <div className="table-title">
             <h2>APY Calculation Approach </h2>
