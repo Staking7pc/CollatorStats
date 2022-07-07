@@ -127,7 +127,7 @@ export default function ZeitgeistCollatorData() {
                     </td>
                     <td>{dailyCountCollator}</td>
                     <td>{calculateAPY(dailyCountCollator, dailyCountedAvgCollator)} %</td>
-                    <td>{(Math.floor(dailyCountedAvgCollator * 100) / 100).toFixed(2)}</td>
+                    <td>{(Math.floor(dailyCountedAvgCollator * 100) / 100).toFixed(0)}</td>
                     <td>{item.countedStake}</td>
                     <td>{item.self}</td>
                     <td>{item.delegatorsCount}</td>
