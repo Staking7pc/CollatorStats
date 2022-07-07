@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import React from "react";
+export var totalIssuance;
 
 function ZeitgeistDashboard() {
   const [collatorConsts, setcollatorConsts] = useState([]);
