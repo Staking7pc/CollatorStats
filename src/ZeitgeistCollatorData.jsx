@@ -5,40 +5,51 @@ import { useState, useEffect } from "react";
 import "./ZeitgeistCollatorData.css";
 import Table from "react-bootstrap/Table";
 
-function ZeitgeistCollatorData() {
-
+export default function ZeitgeistCollatorData() {
   const [collatorData, setcollatorData] = useState([]);
   const [asOfBlock, setasOfBlock] = useState([]);
   const [dailyCount, setdailyCount] = useState([]);
   const [_blocksProduced, setblocksProduced] = useState(() => new Map());
 
-  axios
-  .get("https://collatorstats.brightlystake.com/api/zeitgeist/getDailyStats")
-  .then((res) => {
-    setdailyCount(res.data.data);
-  })
-  .then(() => {
+  function getDailyCountData(collator) {
+    var count = 0,a
     dailyCount.map((item1, index1) => {
-      //var _blocksProduced2 = new Map();
-      _blocksProduced.set(item1.collator, item1.block_count);
-      setblocksProduced(_blocksProduced);
+      item1.collator===collator? count = item1.block_count : a = 1
     });
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+    return count
+  }
 
-  useEffect(() => {
-    axios
-      .get("https://collatorstats.brightlystake.com/api/zeitgeist/getCollatorDetails")
-      .then((res) => {
-        setcollatorData(res.data.data);
-        setasOfBlock(res.data.data[2].asOfBlock);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  useEffect(async () => {
+    const fetchData = async () => {
+      await axios
+        .get("https://collatorstats.brightlystake.com/api/zeitgeist/getCollatorDetails")
+        .then((res) => {
+          console.log("axios 1");
+          setcollatorData(res.data.data);
+          setasOfBlock(res.data.data[2].asOfBlock);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    await fetchData();
   }, []);
+
+  useEffect(async () => {
+    const fetchData1 = async () => {
+      await axios
+        .get("https://collatorstats.brightlystake.com/api/zeitgeist/getDailyStats")
+        .then((res) => {
+          console.log("axios 2");
+          setdailyCount(res.data.data);
+        })
+
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    await fetchData1();
+  }, [_blocksProduced]);
 
   return (
     <>
@@ -48,7 +59,9 @@ function ZeitgeistCollatorData() {
         </div> */}
         <div className="table-title">
           <h4>Updated as of block : {asOfBlock}</h4>
+          {console.log("header")}
         </div>
+
         <div className="table-responsive">
           <Table>
             <thead className="column-header">
@@ -64,7 +77,6 @@ function ZeitgeistCollatorData() {
             </thead>
             <tbody>
               {collatorData.map((item, index) => {
-                var url = "https://collatorstats.brightlystake.com/Zeitgeist/analytics/" + item.collator;
                 return (
                   <tr className="row">
                     <td className={item.isActive === "InActive" ? "InActive" : "Active"}>{item.identity}</td>
@@ -73,7 +85,7 @@ function ZeitgeistCollatorData() {
                       <u>{item.collator}</u>
                       {/* </a> */}
                     </td>
-                    <td>{_blocksProduced.get(item.collator)}</td>
+                    <td>{getDailyCountData(item.collator)}</td>
                     <td>{item.countedStake}</td>
                     <td>{item.self}</td>
                     <td>{item.delegatorsCount}</td>
@@ -89,5 +101,3 @@ function ZeitgeistCollatorData() {
     </>
   );
 }
-
-export default ZeitgeistCollatorData;
