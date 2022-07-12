@@ -31,7 +31,7 @@ export default function ZeitgeistCollatorData() {
   }
   function calculateAPY(blocks, countedStake) {
     
-    var dailyReward = (blocks / dailyBlocks) * ((totalIssuance * (inflation / 2)) / 36500).toFixed(2);
+    var dailyReward = (blocks / dailyBlocks) * (((totalIssuance * inflation * 80)/100) / 36500).toFixed(2);
     console.log('daily Reward : ' + dailyReward + " - "+countedStake)
     var returns = ((100 / countedStake) * dailyReward * 365).toFixed(2);
     return returns;
@@ -150,7 +150,7 @@ export default function ZeitgeistCollatorData() {
           <p>Daily blocks produced by each collator = a </p>
           <p>total blocks produced on a day = b </p>
           <p>a/b will give rewards share % = c </p>
-          <p>total rewards per day is: (total Issuance * (inflation / 2)) / 365 = d</p>
+          <p>total rewards per day is: (total Issuance * (inflation * 80% )) / 365 = d</p>
           <p>d * c will give collators share for the day which will distributed among their delegators = e</p>
           <p>Now to get the totalCounted share for the day for a collator we have took the average of counted state captured every 5 mins for that collaotor = f</p>
           <p>(100/f) * e * 365 should give us the APY</p>

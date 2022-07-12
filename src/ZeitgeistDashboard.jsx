@@ -98,7 +98,7 @@ function ZeitgeistDashboard() {
               <div className="apprxAPY">
                 <div className="content">
                   <div className="label">Approx APY</div>
-                  <div className="value">{Math.ceil(((totalIssuance*(inflation/2)/100)/totalActiveStake)*100)}%</div>
+                  <div className="value">{Math.ceil(((totalIssuance*((inflation*80/100))/100)/totalActiveStake)*100)}%</div>
                 </div>
               </div>
               <div className="minBond">
